@@ -57,6 +57,14 @@
         function openLink() {
             const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const targetUrl = document.getElementById('linkInput').value;
-            const newTab = window.open('about:blank');
-            
+            const iframe = document.getElementById('iframe');
+
             if (targetUrl.trim() === '') {
+                alert('Please paste a valid link.');
+            } else {
+                iframe.src = proxyUrl + targetUrl;
+            }
+        }
+    </script>
+</body>
+</html>
