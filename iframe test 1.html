@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Iframe</title>
+    <title>Link Opener</title>
 </head>
 <body>
-    <iframe src="https://www.google.com" style="width:100%; height:100vh; border:none;"></iframe>
+    <div style="margin: 20px;">
+        <h2>Link Opener</h2>
+        <label for="linkInput">Paste the link:</label><br>
+        <input type="text" id="linkInput" style="width: 300px;"><br><br>
+        <button onclick="openLinkInNewTab()">Open Link</button>
+    </div>
+
+    <script>
+        function openLinkInNewTab() {
+            var link = document.getElementById('linkInput').value;
+            if (isValidUrl(link)) {
+                window.open(link, '_blank');
+            } else {
+                alert('Please enter a valid URL.');
+            }
+        }
+
+        function isValidUrl(url) {
+            var pattern = /^(https?:\/\/)?[\w.-]+\.[a-zA-Z]{2,}(\/\S*)?$/;
+            return pattern.test(url);
+        }
+    </script>
 </body>
 </html>
