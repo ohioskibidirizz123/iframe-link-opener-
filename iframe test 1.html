@@ -24,23 +24,39 @@
             height: 500px;
             border: none;
         }
+        .input-box {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Proxy Website</h1>
-        <p>This website uses a proxy to load content into an iframe.</p>
-        <iframe src="https://example.com" id="iframe"></iframe>
+        <h1>Iframe Opener</h1>
+        <p>Paste a link below and click the button to open it in the iframe.</p>
+        <input type="text" id="linkInput" class="input-box" placeholder="Paste link here">
+        <button onclick="openLink()" class="btn">Open Link</button>
+        <iframe src="" id="iframe"></iframe>
     </div>
 
     <script>
-        // Replace "https://example.com" with the URL you want to proxy
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        const targetUrl = 'https://example.com';
-        const iframe = document.getElementById('iframe');
-        
-        // Load content into iframe using proxy
-        iframe.src = proxyUrl + targetUrl;
-    </script>
-</body>
-</html>
+        // Function to open link in iframe
+        function openLink() {
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const targetUrl = document.getElementById('linkInput').value;
+            const newTab = window.open('about:blank');
+            
+            if (targetUrl.trim() === '') {
